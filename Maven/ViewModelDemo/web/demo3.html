@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例</title>
+</head>
+<body>
+<div id="app">
+    <p>{{msg}}</p>
+    <p>{{msg+"我是谁?"}}</p>
+    <p>{{msg1}}</p>
+    <!--可以改变message的值-->
+    <p>{{message}}</p>
+    <p>{{msg1+102+244}}</p>
+    <p>{{msg1 >5 ? "大于": "小于"}}</p>
+    <h1 v-text="message"/>
+    <input type="text" v-model="">
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        data:{
+            msg:"你好!!" ,
+            msg1: 20,
+            message:"年可能"
+        },
+        method:{
+
+        }
+    });
+    // 改变模型的数据，测试视图是否发生变化
+    vue.message = "你好，尚硅谷"
+</script>

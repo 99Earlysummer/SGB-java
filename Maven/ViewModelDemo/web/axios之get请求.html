@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>axios案例</title>
+</head>
+<body>
+<div id="app">
+    <p>
+        用户名:{{username}} 年龄:{{age}}<br>
+        <input type="text" value="用户名" v-model="username"><br>
+        <input type="text" value="年龄" v-model="age"><br>
+        <input type="button" value="提交" @click="change()"><br>
+    </p>
+    <div v-for="obj in list">
+        {{obj.username}}---->{{obj.age}}
+    </div>
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        data:{
+            username:"试试看我会不会变化",
+            age:0,
+            data: {
+                list:[]
+            }
+        },
+        create(){
+            axios.get("./data/user.json").then(function(resp){
+                // alert(response);
+                console.log(resp);
+                this.list=resp.data;
+                alert(JSON.stringify(resp));
+                alert(resp.data[0].username);
+            }).catch((resp)=> {
+
+            })
+        },
+        methods:{
+            change:function() {
+                this.message=this.test;
+            }
+        }
+    });
+</script>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sgb.mapper.UserMapper">
+
+
+
+
+    <!--查>>>使用#{}like模糊查询-->
+    <select id="selectUserLikeName1" parameterType="string" resultType="user">
+        select *
+        from tb_user
+        where user_name like "%"#{userName}"%"
+    </select>
+<!--查>>>使用${}...能拼接但不能防止注入漏洞因此不常用-->
+    <select id="selectUserLikeName2" parameterType="string" resultType="user">
+        select *
+        from tb_user
+        where user_name like "%${userName}%"
+    </select>
+<!--输入类型之简单类型...可省略输出类型标签-->
+    <select id="selectUserById1" resultType="user">
+        select *
+        from tb_user
+        where user_id  = #{userId}
+    </select>
+    <!--输入映射之零散简单类型...有两参数username和passpwd  在此#{**}中可用 **>>>age0 与 age1  去引用xml配置文件中的参数-->
+    <select id="selectUserByNameAndPwd1" resultType="user">
+        select *
+        from tb_user
+        where user_name =#{param1} and user_pwd=#{param2}
+    </select>
+
+    <select id="selectUserByMap" parameterType="map" resultType="user">
+        select *
+        from tb_user
+        where user_name =#{userName} and user_pwd=#{passPwd}
+    </select>
+    <select id="selectTotalCount" resultType="long">
+        select count(*)
+        from tb_user;
+    </select>
+    
+    <select id="selectUserById3" resultType="user">
+        select user_id userId,user_name userName,user_pwd userPwd
+from tb_user
+where user_id =#{userId}
+    </select>
+
+    <select id="selectUserById4" resultType="user">
+        select *
+        from tb_user;
+    </select>
+
+<!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+    <!--可自定义映射规则-->
+    <resultMap id="userMap" type="user">
+
+    </resultMap>
+
+    <select id="selectUserListByRTesultMap" resultMap="userMap">
+        select *
+        from tb_user;
+    </select>
+<!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+
+
+
+
+
+
+
+</mapper>

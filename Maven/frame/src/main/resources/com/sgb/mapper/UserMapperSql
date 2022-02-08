@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sgb.mapper.UserMapper">
+
+
+<!--动态sql-->
+<sql id="resql">
+    <!--存放重复sql语句 根据id获取-->
+</sql>
+
+<!--动态sql..if标签 判断执行sql(一)-->
+    <select id="selectUserListByNameAndPwd" parameterType="string" resultType="user">
+        select *
+        from tb_user
+        where 1=1<!--pjie-->
+              <if test="userName=null and userPwd!=null">
+                  and user_name = #{userName}
+              </if>
+                <if test="userName!=null and userPwd=null">
+                <!--两语句之间用***连接-->
+                    and user_Pwd = #{userPwd}
+                </if>
+    </select>
+    <!--动态sql..where标签 会去除slq语句多余的or/and(二)-->
+    <select id="selectUserListByWhere" parameterType="string" resultType="user">
+        select *
+        from tb_user
+        <where><!--1=1pjie-->
+        <if test="userName=null and userPwd!=null">
+            and user_name = #{userName}
+        </if>
+        <if test="userName!=null and userPwd=null">
+            <!--两语句之间用***连接-->
+            and user_Pwd = #{userPwd}
+        </if>
+        </where>
+</select>
+    <!--动态sql..trim标签 设置前后缀(三)-->
+    <select id="selectUserListByTrim" parameterType="string" resultType="user">
+        select *
+        from tb_user
+       <trim prefix="where" prefixOverrides="and|or">/*prefix表示条件成立添加where prefixOverrides条件成立去除and|or */
+            <if test="userName=null and userPwd!=null">
+                and user_name = #{userName}
+            </if>
+            <if test="userName!=null and userPwd=null">
+                <!--两语句之间用***连接-->
+                and user_Pwd = #{userPwd}
+            </if>
+       </trim>
+    </select>
+    <!--动态sql..set标签  动态生成set关键字去掉语句体内多余的逗号(三)-->
+
+    <update id="updateUserById">
+        update tb_user
+        <set>
+            <if test="userName!=null and userName!=''">
+                user_name = #{userName},
+            </if>
+            <if test="userPwd!=null and userPwd!=''">
+                user_pwd = #{userPwd},
+            </if>
+        </set>
+
+        where user_id = #{userId}
+    </update>
+
+    <!--
+    choose 标签
+    choose when otherwise 标签可以帮我们实现 if else 的逻辑。一个 choose 标签至少有一个 when, 最多一个otherwise。
+    仅有一个能通过
+    在多个分支条件中，仅执行一个，而后面的条件匹配都会被忽略
+    -->
+    <select id="selectUserListByChoose" resultType="user">
+        select *
+        from tb_user
+        <where>
+            <choose>
+                <when test="userName!=null and userName!=''">
+                user_name=#{userName}
+                </when>
+                <when test="userPwd!=null and userPwd !=''">
+                username=#{userPwd}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+<!--
+  <foreach collection="list" item="id" open="(" close=")" separator="," index="i">
+      #{id}
+    </foreach>
+    foreach 标签可以对数组， Map 或实现 Iterable 接口。
+
+    foreach 中有以下几个属性：
+
+    collection: 必填， 集合/数组/Map的名称.
+
+    item: 变量名。即从迭代的对象中取出的每一个值
+
+    index: 索引的属性名。当迭代的对象为 Map 时， 该值为 Map 中的 Key.
+
+    open: 循环开头的字符串
+
+    close: 循环结束的字符串
+
+    separator: 每次循环的分隔符
+      select *
+        from tb_user
+        where user_name like "%"#{userId}"%"
+    -->
+    <select id="selectUserListByIds2" parameterType="string" resultType="user">
+        select *
+        from tb_user
+        <where>
+            user_id in
+        <foreach collection="list" item="id" open="(" close=")" separator="," index="i">
+            #{id}
+        </foreach>
+</where>
+    </select>
+
+    <!--批量插入记录
+      insert into tb_user values(1,"sgb",101,22)
+      insert into tb_user values(2,"zyf",102,22)
+      -->
+    <insert id="addUser">
+        insert into tb_user values
+        <foreach collection="list" separator="," item="user">
+            (null ,#{user.userName},#{user.userPwd},#{user.money})
+        </foreach>
+    </insert>
+
+
+
+
+    <!--
+      update tb_user set user_name="sgb" where user_id=1
+      update tb_user set user_name="zyf" where user_id=2
+    批量修改  jdbc配置文件中要有标志位allowMultiQueries=true-->
+    <update id="updateUser">
+        update tb_user set values
+        <foreach collection="list" separator=";" item="user">
+            update tb_user set user_name =#{user.usesrName} where user_id=#{user.userId}
+        </foreach>
+    </update>
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.meinian.mapper.SetmealMapper">
+
+      <!-- Page<Setmeal> findPage(String queryString);-->
+    <select id="findPage" resultType="Setmeal">
+        select *
+        from t_setmeal
+        <where>
+            <if test="queryString !=null and queryString !=''">
+                code = #{queryString} or helpCode = #{queryString} or name like "%"#{queryString}"%"
+            </if>
+        </where>
+    </select>
+<!--套餐表void addSetmeal(Setmeal setmeal);-->
+    <insert id="addSetmeal" useGeneratedKeys="true" keyProperty="id">
+        insert into t_setmeal
+        values (
+                     null ,
+                     #{name},
+                     #{code},
+                     #{helpCode},
+                     #{sex},
+                     #{age},
+                     #{price},
+                     #{remark},
+                     #{attention},
+                     #{img}
+               );
+    </insert>
+<!--中间表   void addSetmealAndTravelGroup(@Param("id") Integer id,@Param("travelGroupIds") Integer[] travelGroupIds);-->
+    <insert id="addSetmealAndTravelGroup">
+        insert into t_setmeal_travelgroup
+        values 
+               <foreach collection="travelGroupIds" item="travelGroupId" separator=",">
+                   (
+                   #{id},#{travelGroupId}
+                   )
+               </foreach>
+    </insert>
+    
+    <!--移动端List<Setmeal> findAll();-->
+    <select id="findAll">
+        select *
+        from t_setmeal;
+    </select>
+</mapper>

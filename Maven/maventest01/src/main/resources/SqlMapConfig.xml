@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--配置jdbc-->
+<properties resource="jdbc.properties"></properties>
+
+<!--
+    <settings>
+
+    </settings>
+-->
+
+
+<!-- 设置别名缩写名字  -->
+<!--    <typeAliases>
+        <typeAlias alias="Author" type="domain.blog.Author"/>
+    </typeAlias>-->
+    <!--指定一个包名-->
+<!--    <typeAliases>-->
+<!--        <package name="******"/>-->
+<!--    </typeAliases>-->
+
+    <environments default="development">
+        <environment id="development">
+            <!--事务管理器-->
+            <transactionManager type="JDBC"/>
+            <!--数据源-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--加载映射配置文件-->
+<mappers>
+    <mapper resource="mapper01.xml"></mapper>
+</mappers>
+    <
+<!--    &lt;!&ndash;加载映射配置文件  配置映入与映出&ndash;&gt;-->
+<!--    <mappers>-->
+<!-- &lt;!&ndash;       传统dao开发\接口代理开发&ndash;&gt;-->
+<!--        <mapper resource="mapper01.xml"/>-->
+<!--        &lt;!&ndash;仅使用在接口代理&ndash;&gt;-->
+
+<!--        &lt;!&ndash;仅使用在接口代理&ndash;&gt;-->
+<!--&lt;!&ndash;        <package name="88888888888"/>&ndash;&gt;-->
+<!--    </mappers>-->
+</configuration>
+<!--
+官方核心配置文件
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="org/mybatis/example/BlogMapper.xml"/>
+  </mappers>
+</configuration>
+-->

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/request/modelAndView6}" method="get">
+
+    学生姓名:
+    <input type="text" name="stuName"><br>
+    学校名称:
+    <input type="text" name="school.schoolName"><br>
+    学科1名称[List类型]:
+    <input type="text" name="subjectList[0].subjectName"><br>
+    学科2名称[List类型]:
+    <input type="text" name="subjectList[1].subjectName"><br>
+    学科3名称[List类型]:
+    <input type="text" name="subjectList[2].subjectName"><br>
+    学科1名称[数组类型]:
+    <input type="text" name="subjectArray[0].subjectName"><br>
+    学科2名称[数组类型]:
+    <input type="text" name="subjectArray[1].subjectName"><br>
+    学科3名称[数组类型]:
+    <input type="text" name="subjectArray[2].subjectName"><br>
+    学科1分数:
+    <input type="text" name="scores['javase']"><br>
+    学科2分数:
+    <input type="text" name="scores['javame']"><br>
+    学科3分数:
+    <input type="text" name="scores['javaee']"><br>
+    <button type="submit">提交</button>
+
+</form>
+</body>
+</html>

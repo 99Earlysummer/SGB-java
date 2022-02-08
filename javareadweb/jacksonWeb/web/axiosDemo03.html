@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios03</title>
+</head>
+<body>
+<div id="app">
+<input type="text" v-model="username">
+    <button @click="fn()">提交</button>
+</div>
+</body>
+<script src="./WEB-INF/js/vue.js"></script>
+<script>
+var vue = new Vue({
+    el:"#app",
+    data:{
+        username:""
+    },
+    methods:{
+        fn(){
+            var _this=this
+            axios({
+                method:"get",
+                url:"/jacksonWeb/axios/demo03",
+                params:{
+                    username:_this.username
+                }
+            }).then(function (res){
+                console.log(res)
+            }).catch(function (error){
+                console.log(error)
+            })
+        }
+    }
+});
+</script>
+</html>

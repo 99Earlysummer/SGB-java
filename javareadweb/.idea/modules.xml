@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Filter/Filter.iml" filepath="$PROJECT_DIR$/Filter/Filter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Filter_Listener过滤器/Filter_Listener过滤器.iml" filepath="$PROJECT_DIR$/Filter_Listener过滤器/Filter_Listener过滤器.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cookie/cookie.iml" filepath="$PROJECT_DIR$/cookie/cookie.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jacksonWeb/jacksonWeb.iml" filepath="$PROJECT_DIR$/jacksonWeb/jacksonWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javareadweb.iml" filepath="$PROJECT_DIR$/javareadweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jdbc连接/jdbc连接.iml" filepath="$PROJECT_DIR$/jdbc连接/jdbc连接.iml" />
+      <module fileurl="file://$PROJECT_DIR$/servlet线程安全/servlet线程安全.iml" filepath="$PROJECT_DIR$/servlet线程安全/servlet线程安全.iml" />
+      <module fileurl="file://$PROJECT_DIR$/text/text.iml" filepath="$PROJECT_DIR$/text/text.iml" />
+      <module fileurl="file://$PROJECT_DIR$/text下载/text下载.iml" filepath="$PROJECT_DIR$/text下载/text下载.iml" />
+      <module fileurl="file://$PROJECT_DIR$/text转发/text转发.iml" filepath="$PROJECT_DIR$/text转发/text转发.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/响应对象/响应对象.iml" filepath="$PROJECT_DIR$/响应对象/响应对象.iml" />
+      <module fileurl="file://$PROJECT_DIR$/线程安全servlet/线程安全servlet.iml" filepath="$PROJECT_DIR$/线程安全servlet/线程安全servlet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/重定向/重定向.iml" filepath="$PROJECT_DIR$/重定向/重定向.iml" />
+    </modules>
+  </component>
+</project>

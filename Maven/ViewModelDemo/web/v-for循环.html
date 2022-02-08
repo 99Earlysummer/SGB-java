@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+</head>
+<body>
+<div id="app">
+<ul>
+    <li v-for="majors,index in majors">{{index}}--{{majors}}</li>
+</ul>
+<p v-for="conut in 10" >{{conut}}</p>
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        data:{
+           majors:["sdf","啊啊分","温热"]
+        }
+       
+
+
+    });
+</script>

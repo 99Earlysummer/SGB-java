@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test2">
+
+
+    <!--
+        配置MappedStatement
+        id:statement唯一标识
+        parameterType: 输入映射的类型
+        resultType: 输出映射的类型
+    -->
+    <!--此处为sql语句 id:  parameterType:    resultType:    -->
+    <select id="selectExamById" parameterType="int" resultType="pojo.Exam">
+        select * from emp where deptno=#{deptno};
+    </select>
+
+</mapper>

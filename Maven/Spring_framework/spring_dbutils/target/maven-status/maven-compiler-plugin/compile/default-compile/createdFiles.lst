@@ -1,0 +1,6 @@
+com\sgb\pojo\User.class
+com\sgb\controller\UserController.class
+com\sgb\Dao\Impl\UserDaoImpl.class
+com\sgb\test\UserServiceImpl.class
+com\sgb\Dao\UserDao.class
+com\sgb\service\UserService.class

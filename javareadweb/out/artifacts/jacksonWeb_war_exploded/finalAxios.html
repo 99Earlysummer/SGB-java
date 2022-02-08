@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FianlAxios</title>
+</head>
+<body>
+<div id="app">
+员工编号:<input type="text" v-model="id">
+    <button @click="selectEmployee()">查询</button>
+    <div v-if="flag">
+查询结果:<br/>
+    编号:<span v-text="employee.employeeId"></span>
+    姓名:<span v-text="employee.employeeName"></span>
+    年龄:<span v-text="employee.age"></span>
+    薪资:<span v-text="employee.salary"></span>
+</div>
+    <div v-if="!flag">
+
+<span>查无此人!!</span>
+
+    </div>
+</div>
+</body>
+<script src="./js/vue.js"></script>
+<script src="./js/axios.js"></script>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        data:{
+            id:"",
+            flag:true,
+            employee:""
+        },
+        methods:{
+            /**
+             * 根据id查询员工信息
+             */
+            selectEmployee(){
+                var _this=this
+                axios({
+                    method:"get",
+                    url:"/jacksonWeb/fianlservlet",
+                    params: {
+                        id:_this.id
+                    }
+                }).then(function (res){
+                    var data = res.data;
+                    console.log(data)
+                    // data是js对象  要获取data中的data这组属性
+                    var employee = data.data;
+                    _this.flag=data.flag;
+                    _this.employee=employee
+                }).catch(function (error){
+                    console.log(error)
+                })
+
+            }
+        }
+    });
+
+
+</script>
+</html>

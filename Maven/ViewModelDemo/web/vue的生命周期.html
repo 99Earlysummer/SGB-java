@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <meta charset="utf-8" />
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <title>vuejs生命周期</title>
+   </head>
+
+   <body>
+      <div id="app">
+         {{message}}
+      </div>
+   </body>
+   <script>
+      var vue = new Vue({
+         el: "#app",
+         //template:"<h1><font color='red'>你好硅谷</font></h1>", //在vue配置项中修改的
+         data: {
+            message: 'hello world'
+         },
+        
+             methodName() {
+                 
+             },
+             beforeCreate() {
+                showData('创建vue实例前', this);
+             },
+             created() {
+                showData('创建vue实例后', this);
+             },
+             beforeMount() {
+                showData('挂载到dom前', this);
+             },
+             mounted() {
+                showData('挂载到dom后', this);
+             },
+             beforeUpdate() {
+                showData('数据变化更新前', this);
+             },
+             updated() {
+                showData('数据变化更新后', this);
+             },
+             beforeDestroy: function() {
+            showData('vue实例销毁前', this);
+            },
+            destroyed: function() {
+                showData('vue实例销毁后', this);
+            }  
+         
+      });
+      function showData(process, obj) {
+         console.log(process);
+         console.log('data 数据：' + obj.message)
+         console.log('vue挂载的虚拟dom对象：')
+         console.log(obj.$el)
+         console.log('真实dom结构：' + document.getElementById('app').innerHTML);
+         console.log('------------------')
+         console.log('------------------')
+      }
+     
+      vue.message = "good...";
+      //setTimeout(function(){
+         vue.message = "good...";
+      //},3000)
+
+      //setTimeout(function(){
+         vue.$destroy(); // 销毁了监听，不会执行数据变化的监听，即不会将message的值改成good...
+      //},6000)
+
+</script>

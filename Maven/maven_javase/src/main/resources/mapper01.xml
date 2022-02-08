@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test1">
+
+
+    <!--
+        配置MappedStatement
+        id:statement唯一标识
+        parameterType: 输入映射的类型
+        resultType: 输出映射的类型
+    -->
+    <!--此处为sql语句 id:  parameterType:    resultType:    -->
+    <insert id="addExam" parameterType="pojo.Exam">
+        insert into t_user values (${userId},${userName},${userPwd},${email})
+    </insert>
+
+
+<select id="selectExam" parameterType="pojo.Exam" resultType="pojo.Exam">
+    select * from t_user where user_id=#{userId};
+</select>
+
+<delete id="deleteExam" parameterType="int">
+    delete from t_user where user_id=#{id}
+</delete>
+
+<update id="updateExam" parameterType="int">
+    update t_user set  user_id=#{userId},user_name=#{userName},user_pwd=#{userPwd},email=#{email} where user_id=#{userId}
+</update>
+
+
+
+</mapper>

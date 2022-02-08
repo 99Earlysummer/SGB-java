@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <title>ModelBaseServlet类</title>
+</head>
+<body>
+<form action="/demo8" method="get">
+    账号:<input type="text" name="zh"/>
+    密码:<input type="password" name="mm"/>
+    <button type="submit">提交</button>
+</form>
+<a href="user?method=addUser&username=root&password=12345">添加用户</a>
+<a href="user?method=deleteUser">删除用户</a>
+<a href="user?method=updateUser">修改用户</a>
+<a href="user?method=selectUser">查询用户</a>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring_jdbcTemplate" />
+        <module name="spring_fanye" />
+        <module name="spring_IOC" />
+        <module name="spring_di" />
+        <module name="spring_scope" />
+        <module name="SpringBeanLife" />
+        <module name="spring_aop_anno" />
+        <module name="spring_web" />
+        <module name="spring_dbutils" />
+        <module name="spring_mybatis_anli" />
+        <module name="spring_p" />
+        <module name="spring_sm_interface" />
+        <module name="spring_team" />
+        <module name="spring_applicationContext" />
+        <module name="spring_AOP" />
+        <module name="SpringBeanLive" />
+        <module name="spring_annotation" />
+        <module name="dbutilss-annotation" />
+        <module name="spring_log" />
+        <module name="AOP" />
+        <module name="spring_transaction_xml" />
+        <module name="spring_uuuuuuuuuu" />
+        <module name="Springworkd" />
+        <module name="Spring_transaction" />
+        <module name="spring_transaction_management" />
+        <module name="spring_dao_sm" />
+        <module name="sm_interface" />
+        <module name="spring_mybatis" />
+        <module name="spring_sm_dao" />
+        <module name="static_factory" />
+        <module name="spring_factoryBean" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spring_beansss" target="8" />
+      <module name="spring_web_24" target="1.7" />
+      <module name="spring_标签与团队开发" target="8" />
+      <module name="spring_类型获bean" target="8" />
+      <module name="springBeanLife" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

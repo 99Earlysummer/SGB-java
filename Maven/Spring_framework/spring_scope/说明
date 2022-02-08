@@ -1,0 +1,6 @@
+bean的scope属性
+
+- singleton : 默认值，单例
+- prototype : 多例
+- request
+- session

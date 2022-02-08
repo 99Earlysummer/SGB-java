@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 对应dao接口全称：包名+类名 -->
+<mapper namespace="com.hao.dao.UserDao">
+
+    <!-- 属性名与列名不一致的解决办法 column 数据库列名 properrty 类里的属性名 -->
+    <resultMap type="User" id="userMap">
+        <result column ="uname" property="name"/>
+    </resultMap>
+
+    <!--查询所有用户-->
+    <select id="findAllUser" resultMap="userMap">
+        select * from t_users;
+    </select>
+
+
+</mapper>

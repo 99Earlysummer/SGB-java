@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+     <!--Spring使用静态工厂IOC对象--> <!--Spring使用构造器IOC对象-->
+     <bean id="bean01" factory-method="getBean" class="com.sgb.factory.StaticBeanFactory"></bean>
+     <!--Spring使用实例工厂IOC对象-->
+     <bean id="bean02" factory-method="getBean" factory-bean="dynamicBeanFactory"></bean>
+     <bean id="dynamicBeanFactory" class="com.sgb.factory.DynamicBeanFactory"></bean>
+     <!--使用别名-->
+     <bean id="user1" class="com.sgb.pojo.User"></bean>
+     <!--主配置导入其他配置-->
+     <import resource="spring-core02.xml"></import>
+     <import resource="spring-core01.xml"></import>
+
+</beans>

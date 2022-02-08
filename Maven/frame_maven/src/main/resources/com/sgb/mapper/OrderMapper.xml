@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sgb.mapper.OrderMapper">
+
+    <resultMap id="orderMap" type="order">
+        <!--自定义规则
+       Order类的自定义输出映射规则
+        <resultMap id="orderMap" type="order">
+            <id property="orderId" column="order_id" javaType="int"></id>
+            <result property="orderState" column="order_state" javaType="String"></result>
+            <association property="customer" javaType="customer">
+                <id property="customerId" column="customer_id" javaType="int"></id>
+                <result property="customerName" column="customer_name" javaType="String"></result>
+                <result property="address" column="address" javaType="String"></result>
+            </association>
+        </resultMap>
+        -->
+
+        <id property="orderId" column="order_id" javaType="int"/>
+        <result property="orderState" column="order_state" javaType="String"/>
+        <association property="customer" javaType="Customer">
+            <id property="customerId" column="customer_id" javaType="int"/>
+            <result property="customerName" column="customer_name" javaType="String"/>
+            <association property="address" column="address" javaType="String"/>
+        </association>
+    </resultMap>
+    <!--关联查询-->
+    <select id="selectOrderAndCustomerByOrderId" resultMap="orderMap">
+        select *
+        from tb_order
+                 inner join tb_customer on tb_customer.customer_id = tb_order.customer_no
+        where tb_order.order_id = #{orderId}
+    </select>
+    <!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+
+    <resultMap id="orderMap2" type="order">
+        <id property="orderId" column="order_id" javaType="int"></id>
+        <result property="orderState" column="order_state" javaType="String"></result>
+        <association property="customer" javaType="Customer">
+
+        </association>
+    </resultMap>
+    <!--多表(分步)查询-->
+    <select id="selectOrderByOrderId" resultMap="orderMap2">
+        select *
+        from tb_order
+                 inner join tb_customer on tb_customer.customer_id = tb_order.customer_no
+        where tb_order.order_id = #{orderId}
+    </select>
+
+    <!--①②调用第二次单表查询:传入customer_no字段值-->
+    <resultMap id="orderMap3" type="order">
+        <id property="orderId" column="order_id" javaType="int" ></id>
+        <result property="orderState" column="order_state" javaType="String"></result>
+        <association property="customer"
+                     select="com.sgb.mapper.CustomerMapper.selectCustomerByCustomerId"
+                     column="customer_no"
+
+                    fetchType="lazy"
+        ></association><!--👆延迟加载-->
+    </resultMap>
+    <select id="selectOrderByOrderId2" resultMap="orderMap3">
+        select *
+        from tb_order
+        where order_id = #{orderId};
+    </select>
+
+
+
+
+
+    <!--②③第二次单表查询-->
+    <select id="selectOrderListByCustomerId" resultType="order">
+        select *
+        from tb_order
+        where customer_no = #{customerId}
+    </select>
+
+</mapper>

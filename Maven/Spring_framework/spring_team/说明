@@ -1,0 +1,10 @@
+当spring中有多个spring配置文件时:
+①在加载时全部
+newClassPathXmlApplicationContext("spring-core.xml","XXXXXX","XXXX");
+②在主配文件中导入(implement)其他配置文件(主推)
+<import resource="XXX">
+
+注:当有多个配置文件时加载到当前配置文件就覆盖其他配置文件
+在不同的配置文件中有相同的bean遵守后配置后加载覆盖前面的配置
+
+bean标签:

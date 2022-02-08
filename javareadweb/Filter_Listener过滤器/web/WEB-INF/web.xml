@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <!--这是***得配置
+    <servlet>
+        <servlet-name>Demo01</servlet-name>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Demo01</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+    -->
+
+<!--    <filter>
+        <filter-name>Demo01</filter-name>
+        <filter-class>Filter.Demo01</filter-class>
+    </filter>
+    &lt;!&ndash;拦截条件url-pattern内是阻止访问demo03&ndash;&gt;
+    <filter-mapping>
+        <filter-name>Demo01</filter-name>
+        <url-pattern>/Demo03</url-pattern>
+    </filter-mapping>-->
+
+
+<!--    <filter>
+        <filter-name>Demo01Servlet</filter-name>
+        <filter-class>Filter.Demo01Servlet</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Demo01Servlet</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>-->
+
+<!--    <filter>
+        <filter-name>Demo03</filter-name>
+        <filter-class>Filter.Demo03</filter-class>
+        &lt;!&ndash;初试化参数&ndash;&gt;
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>-->
+
+<!--    &lt;!&ndash;拦截条件url-pattern内是阻止访问所有的&ndash;&gt;
+    <filter-mapping>
+        <filter-name>Demo03</filter-name>
+        <url-pattern>/*</url-pattern>
+        &lt;!&ndash;对请求包含进行过滤&ndash;&gt;
+        <dispatcher>INCLUDE</dispatcher>
+    </filter-mapping>-->
+
+
+    <!--<filter>
+        <filter-name>Demo02</filter-name>
+        <filter-class>Filter.Demo02</filter-class>
+        &lt;!&ndash;初试化参数&ndash;&gt;
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>name的值是我是你的</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>Demo02</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>-->
+<!--<filter>
+    <filter-name>Demo8</filter-name>
+    <filter-class>Filter.Demo8</filter-class>
+</filter>
+    <filter-mapping>
+        <filter-name>Demo8</filter-name>
+        <url-pattern>/*</url-pattern>
+        &lt;!&ndash;请求过滤&ndash;&gt;
+        <dispatcher>REQUEST</dispatcher>
+        &lt;!&ndash;请求转发进行过滤&ndash;&gt;
+        <dispatcher>FORWARD</dispatcher>
+        &lt;!&ndash;对请求包含进行过滤&ndash;&gt;
+        <dispatcher>INCLUDE</dispatcher>
+        &lt;!&ndash;对触发全局错误页面进行过滤&ndash;&gt;
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping-->
+
+    <!--错误页面-->
+<!--    <error-page>
+        <location>/Demo01</location>
+    </error-page>-->
+<!--<servlet>
+    <servlet-name>Demo8</servlet-name>
+    <servlet-class>Filter.Demo8Servlet</servlet-class>
+</servlet>
+    <servlet-mapping>
+        <servlet-name>Demo8</servlet-name>
+        <url-pattern>/demo8</url-pattern>
+    </servlet-mapping>-->
+<listener>
+    <listener-class>MyservletContextListener</listener-class>
+</listener>
+
+</web-app>

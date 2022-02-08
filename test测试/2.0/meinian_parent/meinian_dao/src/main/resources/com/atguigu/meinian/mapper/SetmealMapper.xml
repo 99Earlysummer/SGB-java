@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.meinian.mapper.SetmealMapper">
+
+    <!--   Page<Setmeal> findPage(String queryString);-->
+    <select id="findPage">
+        select *
+        from t_setmeal
+        <where>
+            <if test="queryString !=null and queryString !=''">
+                code = #{queryString} or helpCode = #{queryString} or name like "%"#{queryString}"%"
+            </if>
+        </where>
+
+;
+    </select>
+
+
+</mapper>

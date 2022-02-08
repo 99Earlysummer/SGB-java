@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+    <!--扫描注解-->
+    <context:component-scan base-package="com.sgb" />
+    <aop:config>
+        <aop:aspect ref="myAdvice04">
+            <aop:pointcut id="p3" expression="execution(* *..*Service.*(..))"/>
+            <aop:around method="around2After" pointcut-ref="p3"></aop:around>
+            <aop:around method="around2AfterReturning" pointcut-ref="p3"></aop:around>
+            <aop:around method="around2AfterThrowing" pointcut-ref="p3"></aop:around>
+            <aop:around method="around2Before" pointcut-ref="p3"></aop:around>
+
+        </aop:aspect>
+    </aop:config>
+    <!-- &lt;!&ndash;编写spring-core.xml配置文件&#45;&#45;&#45;&#45;(原因:配置 目标对象 与 通知 之间得关系)&ndash;&gt;
+     &lt;!&ndash;配置切面&ndash;&gt;-
+ <aop:config>
+     &lt;!&ndash;当前配置有效&ndash;&gt;
+     &lt;!&ndash; 提取出来的共性方法  aop:切入点  id  expression=execution(表达式)&ndash;&gt;
+     <aop:pointcut id="p1" expression="execution(* *..*ServiceImpl.*(..))"/>
+
+     &lt;!&ndash;将通知织入到切入点中&ndash;&gt;
+     <aop:aspect ref="myAdvice01">
+         &lt;!&ndash;切入点当前通知有效&ndash;&gt;
+         &lt;!&ndash;配置后置通知   通知方法名                 切入点       修饰符 返回值类型    方法全类名&ndash;&gt;
+         <aop:after method="printLog" pointcut="execution(public void com.sgb.service.impl.UserServiceImpl.addUser())"/>
+         &lt;!&ndash;配置前置通知   通知方法名                 切入点       修饰符 返回值类型    方法全类名&ndash;&gt;
+         <aop:before method="checkPermission" pointcut="execution(public void com.sgb.service.impl.UserServiceImpl.addUser())"></aop:before>
+     </aop:aspect>
+
+
+     &lt;!&ndash;将通知织入到切入点中&ndash;&gt;
+     <aop:aspect ref="myAdvice01">
+         &lt;!&ndash;配置后置通知   通知方法名                 切入点       修饰符 返回值类型    方法全类名&ndash;&gt;
+         <aop:after method="printLog" pointcut="execution( * *..UserServiceImpl.deleteUser())"/>
+         &lt;!&ndash;配置前置通知   通知方法名                 切入点       修饰符 返回值类型    方法全类名&ndash;&gt;
+         <aop:before method="checkPermission" pointcut="execution(* *..UserServiceImpl.deleteUser())"></aop:before>
+     </aop:aspect>
+
+
+
+     &lt;!&ndash;将通知织入到切入点中&ndash;&gt;
+     <aop:aspect ref="myAdvice02">
+
+         <aop:before method="printLog" pointcut-ref="p1"></aop:before>
+     </aop:aspect>
+ </aop:config>-->
+</beans>

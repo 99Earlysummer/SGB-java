@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>vuejs中axios数据调用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+    {{message}}
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message: 'helloworld'
+        },
+        methods: {
+            init: function(){
+                alert("传递的参数是："+this.message);
+                axios.get("./data/user.json").then(function(response){
+                    // alert(response);
+                    console.log(response);
+                    alert(JSON.stringify(response));
+                    alert(response.data[0].username);
+                })
+            }
+        },
+        created: function(){
+            this.init();
+        }
+    });
+</script>
+
+</html>

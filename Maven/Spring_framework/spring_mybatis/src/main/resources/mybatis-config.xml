@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="jdbc.properties"></properties>
+
+    <!-- 给实体类命别名  好处：在mapper配置文件中可以不用写全 -->
+    <typeAliases>
+        <package name="com.hao.pojo"/>
+    </typeAliases>
+
+    <mappers>
+        <!--        <mapper resource="com/hao/mapper/UserMapper.xml" />-->
+        <!--        这个包下所有mapper.xml文件一次都能加载-->
+        <package name="com.hao.mapper"/>
+    </mappers>
+
+</configuration>
+

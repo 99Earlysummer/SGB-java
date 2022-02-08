@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.meinian.mapper.SetmealMapper">
+
+
+    <!-- Page<Setmeal> findPage(String queryString);-->
+    <select id="findPage" resultType="Setmeal">
+        select *
+        from t_setmeal
+        <where>
+            <if test="queryString !=null and queryString !=''">
+                code = #{queryString} or helpCode = #{queryString} or name like "%"#{queryString}"%"
+            </if>
+        </where>
+    </select>
+    <!--套餐表void addSetmeal(Setmeal setmeal);-->
+    <insert id="addSetmeal" useGeneratedKeys="true" keyProperty="id">
+        insert into t_setmeal
+        values (null,
+                #{name},
+                #{code},
+                #{helpCode},
+                #{sex},
+                #{age},
+                #{price},
+                #{remark},
+                #{attention},
+                #{img})
+    </insert>
+    <!--中间表   void addSetmealAndTravelGroup(@Param("id") Integer id,@Param("travelGroupIds") Integer[] travelGroupIds);-->
+    <insert id="addSetmealAndTravelGroup">
+        insert into t_setmeal_travelgroup
+        values
+        <foreach collection="travelGroupIds" item="travelGroupId" separator=",">
+            (
+            #{id},#{travelGroupId}
+            )
+        </foreach>
+    </insert>
+
+    <!--移动端List<Setmeal> findAll();-->
+    <select id="findAll" resultType="Setmeal">
+        select *
+        from t_setmeal;
+    </select>
+
+    <resultMap id="findByIdMap" type="Setmeal">
+        <id column="id"  property="id"/><!--id 主键  property 属性--><!--jdbcType="INTEGER"-->
+        <result column="name"  property="name"/><!--jdbcType="VARCHAR"-->
+        <result column="sex"  property="sex"/><!--jdbcType="CHAR"-->
+        <result column="age"  property="age"/><!--jdbcType="VARCHAR"-->
+        <result column="remark"  property="remark"/><!--jdbcType="VARCHAR"-->
+        <result column="img"  property="img"/><!--jdbcType="VARCHAR"-->
+        <!--所有跟团游信息查询出来   -将com.atguigu.meinian.mapper.TravelGroupMapper.findTravelGroupsBySetmealId查询到的结果赋值给travelGroups  连接到其他查询sql语句-->
+        <collection property="travelGroups"
+                    select="com.atguigu.meinian.mapper.TravelGroupMapper.findTravelGroupsBySetmealId"
+                    column="id"></collection><!--select分步查询的下一步   column分步查询的条件字段-->
+    </resultMap>
+    <!--Setmeal findById(Integer id);-->
+    <select id="findById" resultMap="findByIdMap">
+        select s.id, s.age, s.img, s.name, s.remark, s.sex
+        from t_setmeal s
+        where id = #{id}
+    </select>
+    <!--预约信息-->
+    <select id="getSetmealData" resultType="java.util.Map">
+        SELECT t_setmeal.name,COUNT(t_setmeal.id) value FROM t_order
+         LEFT JOIN t_setmeal
+          ON t_order.setmeal_id = t_setmeal.id
+        GROUP BY t_setmeal.id
+    </select>
+
+    <!--删除中间表-->
+    <delete id="deleteTravelGroupAndTravelItemByTravelGroupId">
+        delete from t_setmeal_travelgroup where setmeal_id = #{id}
+    </delete>
+<!--删除套餐游信息-->
+    <delete id="deleteTravelGroup" >
+        delete from t_setmeal where t_setmeal.id = #{id}
+    </delete>
+</mapper>

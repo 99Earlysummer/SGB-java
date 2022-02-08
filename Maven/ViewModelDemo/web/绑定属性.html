@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>单击</title>
+</head>
+<body>
+<div id="app">
+    <p>
+       ===== {{message}} =前后还有内容时用====
+    </p>
+    <div class="red big"></div>
+    <div :class="{red:isRed,big.isBig}" class="red big"></div>
+    <div :class="['red','big']"></div>
+
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    .red{
+        color:red;
+    }
+    .big{
+        font-size:30px;
+    }
+</style>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        data:{
+           isRed:true,
+            isBig:false,
+            reds:'red'
+        },
+        methods:{
+
+           }
+
+
+    });
+</script>

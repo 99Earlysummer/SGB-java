@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/JDBCTest.iml" filepath="$PROJECT_DIR$/JDBCTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/daoruJDBC/daoruJDBC.iml" filepath="$PROJECT_DIR$/daoruJDBC/daoruJDBC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/daoruJDBC/lib.iml" filepath="$PROJECT_DIR$/daoruJDBC/lib.iml" />
+    </modules>
+  </component>
+</project>

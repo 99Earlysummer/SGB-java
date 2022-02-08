@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans>
+    <bean id="userService" class="com.sgb.service.Impl.UserServiceImpl"></bean>
+    <bean id="userMapper" class="com.sgb.mapper.Impl.UserMapperImpl"></bean>
+    <bean id="user" class="com.sgb.pojo.User"></bean>
+</beans>

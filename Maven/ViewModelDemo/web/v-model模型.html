@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>单击</title>
+</head>
+<body>
+<div id="app">
+    <p>
+    用户名:{{message}}<br>
+    <input type="text" v-model="test"><br>
+    <input type="button" value="提交" @click="change()"><br>
+
+    </p>
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        data:{
+            message:"试试看我会不会变化!!!",
+            test:"这是双向绑定"
+        },
+        methods:{
+            change:function() {
+                this.message=this.test;
+            }
+        }
+    });
+</script>

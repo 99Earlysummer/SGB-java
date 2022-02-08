@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>单击</title>
+</head>
+<body>
+<div id="app">
+    <p>
+       ===== {{message}} =前后还有内容时用====
+    </p>
+    <p v-text="message">
+        ******会替换这点段
+    </p>
+    <p v-html="messagehtml">
+        *********可以解析heml标签
+    </p>
+
+
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        data:{
+            message:"你好VUE",
+            messagehtml:"显示解析html"
+        },
+        methods:{
+
+           }
+
+
+    });
+</script>

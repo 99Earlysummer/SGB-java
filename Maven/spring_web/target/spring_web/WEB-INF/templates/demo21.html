@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/validator/testValidator2}" >
+    账户:<input type="text" name="userName"><span th:action=""></span><br/>
+    密码:<input type="text" name="userPwd"><span></span><br/>
+    薪资:<input type="text" name="money"><span></span><br/>
+    生日:<input type="text" name="birthday"><span></span><br/>
+    邮箱:<input type="text" name="email"><span></span><br/>
+    电话:<input type="text" name="phoneNum"><span></span><br/>
+    <button type="submit">提交</button>
+</form>
+</body>
+</html>

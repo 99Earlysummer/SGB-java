@@ -1,0 +1,7 @@
+com\sgb\factory\StaticBeanFactory02.class
+com\sgb\pojo\Bean01.class
+com\sgb\factory\DynamicBeanFactory.class
+com\sgb\factory\Impl\Bean03FactoryBean.class
+com\sgb\pojo\Bean03.class
+com\sgb\factory\StaticBeanFactory.class
+com\sgb\pojo\Bean02.class

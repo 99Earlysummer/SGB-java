@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios04</title>
+</head>
+<body>
+<div id="app">
+<input type="text" v-model="username">
+<button @click="fn1()">提交</button>
+</div>
+</body>
+<script src="./js/vue.js"></script>
+<script src="./js/axios.js"></script>
+<script>
+var vue = new Vue({
+    el:"#app",
+    data:{
+        username:""
+    },
+    methods:{
+        fn1(){
+            var _this=this;
+            axios({
+                method:"post",
+                url:"/jacksonWeb/demo04",
+                data: {
+                    username:_this.username
+                }
+            }).then(function (res) {
+                console.log(res)
+            }).catch(function (error){
+                console.log(error)
+            })
+            }
+        }
+});
+
+</script>
+</html>

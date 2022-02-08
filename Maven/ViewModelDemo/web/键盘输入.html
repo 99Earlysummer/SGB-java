@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>单击</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" @keydown="cs($event)"><br>
+    {{message}}<br>
+    <input type="text" @keydown="func($event)"><br>
+
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        data:{
+                message:"无参数!"
+        },
+        methods:{
+           func:function (e) {
+               var keycode = e.keyCode;
+               if (keycode<48 || keycode>57  || e.shiftKey==true){
+                   e.preventDefault();//阻止当前键盘录入
+               }
+           },
+           cs(e){
+               var keycode=e.keyCode;
+                this.message=keycode;
+           }
+
+        }
+    });
+</script>

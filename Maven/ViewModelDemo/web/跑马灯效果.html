@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>单击</title>
+</head>
+<body>
+<div id="app">
+    <p>
+        {{message}}
+    </p>
+    <input type="button" value="点击试试" @click="lang()">
+    <input type="button" value="停" @click="stop()">
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        data:{
+            message:"窗前冥夜荒手动阀发射点发撒旦发生啊手动阀手动阀特瑞特如果豆腐干岁的法国",
+            intervalId:null
+        },
+        methods:{
+            lang () {
+                if (this.intervalId!=null){
+                    return;
+                }
+                this.intervalId=setInterval(()=> {
+                    var start = this.message.substring(1);
+                    console.log(start);
+                    var end = this.message.substring(0,1);
+                    console.log(end)
+                    this.message=start+end;
+                },10);
+
+            },
+            stop () {
+                    clearInterval(this.intervalId);
+                    this.intervalId=null;
+                    this.message="窗前冥夜荒手动阀发射点发撒旦发生啊手动阀手动阀特瑞特如果豆腐干岁的法国";
+            }
+        }
+    })
+
+</script>

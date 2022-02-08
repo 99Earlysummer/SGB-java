@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+     <!--
+      singleton : 默认值，单例
+      prototype : 多例
+     -->
+     <bean id="user" class="com.sgb.pojo.User" scope="singleton" init-method="init" destroy-method="destroy"></bean>
+</beans>

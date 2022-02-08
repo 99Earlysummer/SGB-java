@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios</title>
+</head>
+<body>
+<div id="app">
+<input type="text" name="" v-model="username" @chane="fn1()" >
+<span v-html="errorMsg"></span>
+</div>
+</body>
+<script src="./WEB-INF/js/vue.js"></script>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        data:{
+            username:"",
+            errorMsg:""
+        },
+        methods: {
+            fn1(){
+                var _this=this;
+                //①创建XMLHttpRequest对象
+                XMLHttpRequest
+                xhr=new XMLHttpRequest();
+                //②设置监听XMLHttpRequest对象状态改变
+                xhr.onreadystatechange=function () {
+                    //判断状态码
+                    if (xhr.status==200&&xhr.readyState==4){
+                        //获取响应正文
+                        var jsonstr = xhr.responseText;
+                        console.log(jsonstr)
+                        //json对象转成js对象//将jsonStr -> js对象[js=json.parse(json)]
+                        var jsStr = JSON.parse(jsonstr);
+                        if (jsStr.flag) {
+                            //账户可以使用!
+                            _this.errorMsg = "<font color='blue'>"+jsStr.msg+"</font>"
+                        }else{
+                            //账户已经存在!
+                            _this.errorMsg = "<font color='red'>"+jsStr.msg+"</font>"
+                        }
+                    }
+                }
+                //③打开连接
+                xhr.open("get","/demoaxios?username="+this.username,true);
+                //④发送参数
+                xhr.send();
+               /* axios({
+                   method:"get",
+                   url:"/jacksonWeb/demoaxios",
+                   params:{
+                       username:_this.username
+                   }
+                }).then(function (res) {
+                    console.log(res)
+                }).catch(function (error) {
+                    console.log(error)
+                })*/
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>单击</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="num1">
+    <select v-model="opt">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+      </select>
+  
+    <input type="text" v-model="num2">
+    =
+    <input type="button" value="计算" @click="res()">
+    <input type="text" v-model="result" value="result">
+
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        data:{
+          num1:0,
+          num2:0,
+          opt:"+",
+          result:0
+        },
+        methods:{
+                res(){
+                    switch (this.opt) {
+                        case '+':
+                        this.result = parseInt(this.n1) + parseInt(this.n2)
+                        break;
+                        case '-':
+                        this.result = parseInt(this.n1) - parseInt(this.n2)
+                        break;
+                        case '*':
+                        this.result = parseInt(this.n1) * parseInt(this.n2)
+                        break;
+                        case '/':
+                        this.result = parseInt(this.n1) / parseInt(this.n2)
+                        break;
+          } 
+
+                }
+           }
+
+
+    });
+</script>

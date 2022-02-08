@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.meinian.mapper.MemberMapper">
+    <!--
+    查询会员表，判断当前预约人是否是会员
+   Member findMemberByTelephone(String telephone);-->
+    <select id="findMemberByTelephone" resultType="com.atguigu.meinian.pojo.Member">
+        select *
+        from t_member
+        where phoneNumber = #{telephone}
+    </select>
+
+    <!-- 添加所有注册信息
+
+        void addMember(Member member);-->
+    <insert id="addMember" useGeneratedKeys="true" keyProperty="id">
+        insert into t_member
+        values (null,
+                #{fileNumber},
+                #{name},
+                #{sex},
+                #{idCard},
+                #{phoneNumber},
+                #{regTime},
+                #{password},
+                #{email},
+                #{birthday},
+                #{remark})
+    </insert>
+
+    <!--查询所有会员信息
+    Integer findMemberCountByMonth(@Param("lastDayOfMonth") String lastDayOfMonth);
+    根据日期统计会员数，统计指定日期之前的会员数
+    注意：在xml文件中 ，  <号需要转义”&lt;”
+			>号需要转义”&gt;”
+			&号需要专业 ”&amp;”-->
+<select id="findMemberCountByMonth" resultType="java.lang.Integer">
+    select count(*) from t_member where regTime &lt;= #{regTime}
+</select>
+   <!-- * 获取今日新增会员数
+    Integer getTodayNewMember(@Param("regTime") String reportDate);-->
+
+    <!--Integer getTodayNewMember(@Param("regTime") String reportDate);-->
+    <select id="getTodayNewMember" resultType="int">
+        select count(id) from t_member where regTime &lt;= #{value}
+    </select>
+    <!--* 获取总会员数
+    Integer getTotalMember();-->
+    <!--Integer getTotalMember();-->
+    <select id="getTotalMember" resultType="int">
+        select count(*) from t_member
+    </select>
+    <!-- * 获取本周或本月新增会员数
+     Integer getThisWeekAndMonthNewMember(@Param("regTime") Date thisWeekMonday);-->
+    <!--Integer getThisWeekAndMonthNewMember(@Param("regTime") Date thisWeekMonday);-->
+    <select id="getThisWeekAndMonthNewMember" resultType="int">
+        select count(*) from t_member where regTime >= #{regTime}
+    </select>
+
+
+
+
+
+
+</mapper>

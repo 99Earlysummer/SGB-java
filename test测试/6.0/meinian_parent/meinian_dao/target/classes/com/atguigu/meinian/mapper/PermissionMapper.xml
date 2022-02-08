@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.meinian.mapper.PermissionMapper">
+
+    <!--权限-->
+    <select id="getPermissionByRoleId" resultType="com.atguigu.meinian.pojo.Permission">
+        SELECT tp.*
+        FROM t_role_permission trp
+                  JOIN t_permission tp ON trp.permission_id = tp.id
+        WHERE trp.role_id = #{roleId}
+    </select>
+</mapper>
