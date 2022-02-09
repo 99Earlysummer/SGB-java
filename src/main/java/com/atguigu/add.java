@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 public class add {
     private Integer id;
     private String name;
-    private Boolean flag;
+    private Boolean flaf;
 }
